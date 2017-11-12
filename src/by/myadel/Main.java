@@ -8,6 +8,7 @@ public class Main {
         task1();
         task2();
         task3();
+        task4();
     }
 
     private static void task1() {
@@ -51,5 +52,26 @@ public class Main {
             System.out.println("Диаметр круга " + diameter + " меньше диагонали прямоугольника " + diagonal);
             System.out.println("Круг не закрывает прямоугольник.");
         }
+    }
+
+    private static void task4(){
+        System.out.println("Task 4: \nВведите количество денег в вашем кошельке: ");
+        Scanner inputScanner = new Scanner(System.in);
+        int money = inputScanner.nextInt();
+        System.out.println("У вас есть: " + money + " " + choiceOfCase(money, "рубль", "рубля", "рублей"));
+    }
+
+    private static String choiceOfCase(int money, String one, String few, String many){
+        int moneyAbs = Math.abs(money);
+        int twoLastNumbers = moneyAbs%100;
+        int oneLastNumber = moneyAbs%10;
+        if (twoLastNumbers == 0 || (twoLastNumbers >= 11 && twoLastNumbers <= 14)){
+            return many;
+        } else if (twoLastNumbers == 1 || oneLastNumber == 1){
+                return one;
+        } else if ((twoLastNumbers >= 2 && twoLastNumbers <= 4) || (oneLastNumber >= 2 && oneLastNumber <= 4)){
+            return few;
+        }
+        return many;
     }
 }

@@ -8,7 +8,7 @@ public class Main {
         System.out.println("Введите номер задачи 1..6: ");
         Scanner inputScanner = new Scanner(System.in);
         int taskNumber = inputScanner.nextInt();
-        switch (taskNumber){
+        switch (taskNumber) {
             case 1:
                 task1();
                 break;
@@ -57,7 +57,7 @@ public class Main {
         }
     }
 
-    private static void task3(){
+    private static void task3() {
         System.out.println("Task 3: \nВведите длину прямоугольника: ");
         Scanner inputScanner = new Scanner(System.in);
         double lengthRectangle = inputScanner.nextDouble();
@@ -65,9 +65,9 @@ public class Main {
         double widthRectangle = inputScanner.nextDouble();
         System.out.println("Введите диаметр круга: ");
         double radiusCircle = inputScanner.nextDouble();
-        double diameter = radiusCircle*2;
-        double diagonal = Math.sqrt(Math.pow(lengthRectangle, 2)+ Math.pow(widthRectangle, 2));
-        if (diameter >= diagonal){
+        double diameter = radiusCircle * 2;
+        double diagonal = Math.sqrt(Math.pow(lengthRectangle, 2) + Math.pow(widthRectangle, 2));
+        if (diameter >= diagonal) {
             System.out.println("Диаметр круга " + diameter + " больше диагонали прямоугольника " + diagonal);
             System.out.println("Круг закрывает прямоугольник.");
         } else {
@@ -76,37 +76,37 @@ public class Main {
         }
     }
 
-    private static void task4(){
+    private static void task4() {
         System.out.println("Task 4: \nВведите количество денег в вашем кошельке: ");
         Scanner inputScanner = new Scanner(System.in);
         int money = inputScanner.nextInt();
         System.out.println("У вас есть: " + money + " " + choiceOfCase(money, "рубль", "рубля", "рублей"));
     }
 
-    private static String choiceOfCase(int money, String one, String few, String many){
+    private static String choiceOfCase(int money, String one, String few, String many) {
         int moneyAbs = Math.abs(money);
-        int twoLastNumbers = moneyAbs%100;
-        int oneLastNumber = moneyAbs%10;
-        if (twoLastNumbers == 0 || (twoLastNumbers >= 11 && twoLastNumbers <= 14)){
+        int twoLastNumbers = moneyAbs % 100;
+        int oneLastNumber = moneyAbs % 10;
+        if (twoLastNumbers == 0 || (twoLastNumbers >= 11 && twoLastNumbers <= 14)) {
             return many;
-        } else if (twoLastNumbers == 1 || oneLastNumber == 1){
-                return one;
-        } else if ((twoLastNumbers >= 2 && twoLastNumbers <= 4) || (oneLastNumber >= 2 && oneLastNumber <= 4)){
+        } else if (twoLastNumbers == 1 || oneLastNumber == 1) {
+            return one;
+        } else if ((twoLastNumbers >= 2 && twoLastNumbers <= 4) || (oneLastNumber >= 2 && oneLastNumber <= 4)) {
             return few;
         }
         return many;
     }
 
     private static void task5() {
-        System.out.println("Введите строку в которой содержатся \"#\" и \"?\": ");
+        System.out.println("Task 5: \nВведите строку в которой содержатся \"#\" и \"?\": ");
         Scanner inputScanner = new Scanner(System.in);
         String text = inputScanner.nextLine();
         String textResult = text.replace("?", "").replace("#", "HELLO");
         System.out.println(textResult);
     }
 
-    private static void task6(){
-        System.out.println("Введите х: ");
+    private static void task6() {
+        System.out.println("Task 6: \nВведите х: ");
         Scanner inputScanner = new Scanner(System.in);
         double x = inputScanner.nextDouble();
         System.out.println("Введите t: ");
@@ -114,11 +114,11 @@ public class Main {
         System.out.println("Введите s: ");
         double s = inputScanner.nextDouble();
         double denominator = Math.sqrt(1 + Math.pow(x, s));
-        if (denominator == 0){
+        if (denominator == 0) {
             System.out.println("Нельзя делить на нуль!");
             return;
         }
-        double y = Math.pow(Math.sin((Math.pow(x, t))), 2)/denominator;
+        double y = Math.pow(Math.sin((Math.pow(x, t))), 2) / denominator;
         System.out.println("Результат y = " + y);
     }
 }

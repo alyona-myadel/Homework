@@ -9,6 +9,7 @@ public class Main {
         task2();
         task3();
         task4();
+        task5();
     }
 
     private static void task1() {
@@ -73,5 +74,13 @@ public class Main {
             return few;
         }
         return many;
+    }
+
+    private static void task5() {
+        System.out.println("Введите строку в которой содержатся \"#\" и \"?\": ");
+        Scanner inputScanner = new Scanner(System.in);
+        String text = inputScanner.nextLine();
+        String textResult = text.replace("?", "").replace("#", "HELLO");
+        System.out.println(textResult);
     }
 }

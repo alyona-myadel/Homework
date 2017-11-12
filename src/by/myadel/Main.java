@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         task1();
         task2();
+        task3();
     }
 
     private static void task1() {
@@ -30,6 +31,25 @@ public class Main {
             System.out.println("Последеняя цифра числа " + initialNumber + " равна 7");
         } else {
             System.out.println("Последеняя цифра числа " + initialNumber + " не равна 7");
+        }
+    }
+
+    private static void task3(){
+        System.out.println("Task 3: \nВведите длину прямоугольника: ");
+        Scanner inputScanner = new Scanner(System.in);
+        double lengthRectangle = inputScanner.nextDouble();
+        System.out.println("Введите ширину прямоугольника: ");
+        double widthRectangle = inputScanner.nextDouble();
+        System.out.println("Введите диаметр круга: ");
+        double radiusCircle = inputScanner.nextDouble();
+        double diameter = radiusCircle*2;
+        double diagonal = Math.sqrt(Math.pow(lengthRectangle, 2)+ Math.pow(widthRectangle, 2));
+        if (diameter >= diagonal){
+            System.out.println("Диаметр круга " + diameter + " больше диагонали прямоугольника " + diagonal);
+            System.out.println("Круг закрывает прямоугольник.");
+        } else {
+            System.out.println("Диаметр круга " + diameter + " меньше диагонали прямоугольника " + diagonal);
+            System.out.println("Круг не закрывает прямоугольник.");
         }
     }
 }

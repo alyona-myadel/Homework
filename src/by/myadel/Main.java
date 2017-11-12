@@ -10,6 +10,7 @@ public class Main {
         task3();
         task4();
         task5();
+        task6();
     }
 
     private static void task1() {
@@ -82,5 +83,22 @@ public class Main {
         String text = inputScanner.nextLine();
         String textResult = text.replace("?", "").replace("#", "HELLO");
         System.out.println(textResult);
+    }
+
+    private static void task6(){
+        System.out.println("Введите х: ");
+        Scanner inputScanner = new Scanner(System.in);
+        double x = inputScanner.nextDouble();
+        System.out.println("Введите t: ");
+        double t = inputScanner.nextDouble();
+        System.out.println("Введите s: ");
+        double s = inputScanner.nextDouble();
+        double denominator = Math.sqrt(1 + Math.pow(x, s));
+        if (denominator == 0){
+            System.out.println("Нельзя делить на нуль!");
+            return;
+        }
+        double y = Math.pow(Math.sin((Math.pow(x, t))), 2)/denominator;
+        System.out.println("Результат y = " + y);
     }
 }

@@ -33,8 +33,9 @@ public class Main {
     }
 
     private static void task1() {
-        System.out.println("Task 1:");
-        String string = "Эта строка поделена пополам";
+        System.out.println("Task 1: \nВведите строку: ");
+        Scanner inputScanner = new Scanner(System.in);
+        String string = inputScanner.nextLine();
         int size = string.length();
         System.out.println("Количество символов в строке = " + size);
         int middleIndex = size / 2;

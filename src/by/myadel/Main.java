@@ -101,7 +101,7 @@ public class Main {
         System.out.println("Task 5: \nВведите строку в которой содержатся \"#\" и \"?\": ");
         Scanner inputScanner = new Scanner(System.in);
         String text = inputScanner.nextLine();
-        String textResult = text.replace("?", "").replace("#", "HELLO");
+        String textResult = text.replace("#", "").replace("?", "HELLO");
         System.out.println(textResult);
     }
 

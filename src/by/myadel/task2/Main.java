@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args){
         task1();
         task3();
+        task4();
     }
 
     private static void task1() {
@@ -85,5 +86,43 @@ public class Main {
                 System.out.println(array[i] + "]");
             }
         }
+    }
+
+    private static void task4() {
+        System.out.println("Task 4: \nВведите размер массива: ");
+        Scanner inputScanner = new Scanner(System.in);
+        int size = inputScanner.nextInt();
+        if (size <= 0) {
+            System.out.println("Error");
+            return;
+        }
+        float[] array = new float[size];
+        for (int i = 0; i < size; ++i) {
+            System.out.println("Введите целое число в массив (index = " + i + "):");
+            float value = inputScanner.nextFloat();
+            array[i] = value;
+        }
+        System.out.print("[");
+        for (int i = 0; i < size; ++i) {
+            if (i < size - 1) {
+                System.out.print(array[i] + ", ");
+            } else {
+                System.out.print(array[i] + "]");
+            }
+        }
+        if (isAscendArray(array)) {
+            System.out.print(" - образует возрастающую последовательность");
+        } else {
+            System.out.print(" - не образует возрастающую последовательность");
+        }
+    }
+
+    private static boolean isAscendArray(float[] array) {
+        for (int i = 0; i < array.length - 1; ++i) {
+            if (array[i] > array[i + 1]) {
+                return false;
+            }
+        }
+        return true;
     }
 }

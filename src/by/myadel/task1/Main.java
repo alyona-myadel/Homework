@@ -1,4 +1,4 @@
-package by.myadel;
+package by.myadel.task1;
 
 import java.util.Scanner;
 

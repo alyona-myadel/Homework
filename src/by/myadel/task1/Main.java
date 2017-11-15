@@ -5,30 +5,34 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Введите номер задачи 1..6: ");
-        Scanner inputScanner = new Scanner(System.in);
-        int taskNumber = inputScanner.nextInt();
-        switch (taskNumber) {
-            case 1:
-                task1();
-                break;
-            case 2:
-                task2();
-                break;
-            case 3:
-                task3();
-                break;
-            case 4:
-                task4();
-                break;
-            case 5:
-                task5();
-                break;
-            case 6:
-                task6();
-                break;
-            default:
-                System.out.println("Вы неправильно набрали номер.");
+        while (true) {
+            System.out.println("Введите номер задачи 1..6 (для завершения программы наберите 0): ");
+            Scanner inputScanner = new Scanner(System.in);
+            int taskNumber = inputScanner.nextInt();
+            switch (taskNumber) {
+                case 0:
+                    return;
+                case 1:
+                    task1();
+                    break;
+                case 2:
+                    task2();
+                    break;
+                case 3:
+                    task3();
+                    break;
+                case 4:
+                    task4();
+                    break;
+                case 5:
+                    task5();
+                    break;
+                case 6:
+                    task6();
+                    break;
+                default:
+                    System.out.println("Вы неправильно набрали номер.");
+            }
         }
     }
 

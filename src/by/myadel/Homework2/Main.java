@@ -1,4 +1,4 @@
-package by.myadel.task2;
+package by.myadel.Homework2;
 
 import java.util.Arrays;
 import java.util.Scanner;

@@ -1,5 +1,6 @@
 package by.myadel.task2;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -7,6 +8,7 @@ public class Main {
         task1();
         task3();
         task4();
+        task5();
     }
 
     private static void task1() {
@@ -124,5 +126,86 @@ public class Main {
             }
         }
         return true;
+    }
+
+    private static void task5() {
+        System.out.println("Task 5: \nВведите размер массива: ");
+        Scanner inputScanner = new Scanner(System.in);
+        int size = inputScanner.nextInt();
+        if (size <= 0) {
+            System.out.println("Error");
+            return;
+        }
+        int[] array = new int[size];
+        for (int i = 0; i < size; ++i) {
+            System.out.println("Введите целое число в массив (index = " + i + "):");
+            int value = inputScanner.nextInt();
+            array[i] = value;
+        }
+        System.out.println("Каким методом хотите отсортировать массив? \nСортировка вставками - 1 \nСортировка пузырьком - 2");
+        int methodSort = inputScanner.nextInt();
+        switch (methodSort){
+            case 1:
+                insertionSort(array);
+                break;
+            case 2:
+                bubbleSort(array);
+                break;
+            default:
+                System.out.println("Неправильно выбрали номер сортировки");
+                break;
+        }
+        System.out.println((Arrays.toString(array)));
+        System.out.println("Проверка скорости выполения сортировки (величина массива = 1000)");
+        int testSize = 1000;
+        System.out.println("Время сортировки массива вставками " + String.format("%,12d",measureTime1(testSize)) + " ns");
+        System.out.println("Время сортировки массива пузырьком " + String.format("%,12d",measureTime2(testSize)) + " ns");
+        System.out.println("Но это не точно =)");
+    }
+
+    private static long measureTime1(int testSize){
+        int[] testArray = new int[testSize];
+        for (int i = 0; i < testSize; ++i){
+            testArray[i] = (int)(Math.random()*99999);
+        }
+        long startTime = System.nanoTime();
+        insertionSort(testArray);
+        long endTime = System.nanoTime();
+        return endTime - startTime;
+    }
+
+    private static long measureTime2(int testSize){
+        int[] testArray = new int[testSize];
+        for (int i = 0; i < testSize; ++i){
+            testArray[i] = (int)(Math.random()*99999);
+        }
+        long startTime = System.nanoTime();
+        bubbleSort(testArray);
+        long endTime = System.nanoTime();
+        return endTime - startTime;
+    }
+
+    private static int[] insertionSort(int array[]){
+        for (int j, i = 1; i < array.length; ++i){
+            int value = array[i];
+            for (j = i - 1 ; j >= 0 && array[j] > value; --j){
+                array[j + 1] = array[j];
+            }
+            array[j +1] = value;
+        }
+        return array;
+    }
+
+    private static int[] bubbleSort(int array[]){
+        for (int i = array.length - 1; i >= 0 ; --i){
+            for (int j = 0; j < i; ++j){
+                if (array[j] > array[j + 1]){
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+        return array;
     }
 }

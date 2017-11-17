@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //task1();
         //task3();
         //task4();
@@ -142,9 +142,9 @@ public class Main {
             int value = inputScanner.nextInt();
             array[i] = value;
         }
-        System.out.println("Каким методом хотите отсортировать массив? \nСортировка вставками - 1 \nСортировка пузырьком - 2 \nСортировка выбором - 3" );
+        System.out.println("Каким методом хотите отсортировать массив? \nСортировка вставками - 1 \nСортировка пузырьком - 2 \nСортировка выбором - 3");
         int methodSort = inputScanner.nextInt();
-        switch (methodSort){
+        switch (methodSort) {
             case 1:
                 insertionSort(array);
                 break;
@@ -161,16 +161,16 @@ public class Main {
         System.out.println((Arrays.toString(array)));
         System.out.println("Проверка скорости выполения сортировки (величина массива = 1000)");
         int testSize = 1000;
-        System.out.println("Время сортировки массива вставками " + String.format("%,12d",measureTime1(testSize)) + " ns");
-        System.out.println("Время сортировки массива пузырьком " + String.format("%,12d",measureTime2(testSize)) + " ns");
-        System.out.println("Время сортировки массива выбором " + String.format("%,12d",measureTime3(testSize)) + " ns");
+        System.out.println("Время сортировки массива вставками " + String.format("%,12d", measureTime1(testSize)) + " ns");
+        System.out.println("Время сортировки массива пузырьком " + String.format("%,12d", measureTime2(testSize)) + " ns");
+        System.out.println("Время сортировки массива выбором " + String.format("%,12d", measureTime3(testSize)) + " ns");
         System.out.println("Но это не точно =)");
     }
 
-    private static long measureTime1(int testSize){
+    private static long measureTime1(int testSize) {
         int[] testArray = new int[testSize];
-        for (int i = 0; i < testSize; ++i){
-            testArray[i] = (int)(Math.random()*99999);
+        for (int i = 0; i < testSize; ++i) {
+            testArray[i] = (int) (Math.random() * 99999);
         }
         long startTime = System.nanoTime();
         insertionSort(testArray);
@@ -178,43 +178,43 @@ public class Main {
         return endTime - startTime;
     }
 
-    private static long measureTime2(int testSize){
+    private static long measureTime2(int testSize) {
         long startTime = System.nanoTime();
         bubbleSort(randomArray(testSize));
         long endTime = System.nanoTime();
         return endTime - startTime;
     }
 
-    private static long measureTime3(int testSize){
+    private static long measureTime3(int testSize) {
         long startTime = System.nanoTime();
         selectionSort(randomArray(testSize));
         long endTime = System.nanoTime();
         return endTime - startTime;
     }
 
-    private static int[] randomArray(int testSize){
+    private static int[] randomArray(int testSize) {
         int[] testArray = new int[testSize];
-        for (int i = 0; i < testSize; ++i){
-            testArray[i] = (int)(Math.random()*99999);
+        for (int i = 0; i < testSize; ++i) {
+            testArray[i] = (int) (Math.random() * 99999);
         }
         return testArray;
     }
 
-    private static int[] insertionSort(int array[]){
-        for (int j, i = 1; i < array.length; ++i){
+    private static int[] insertionSort(int array[]) {
+        for (int j, i = 1; i < array.length; ++i) {
             int value = array[i];
-            for (j = i - 1 ; j >= 0 && array[j] > value; --j){
+            for (j = i - 1; j >= 0 && array[j] > value; --j) {
                 array[j + 1] = array[j];
             }
-            array[j +1] = value;
+            array[j + 1] = value;
         }
         return array;
     }
 
-    private static int[] bubbleSort(int array[]){
-        for (int i = array.length - 1; i >= 0 ; --i){
-            for (int j = 0; j < i; ++j){
-                if (array[j] > array[j + 1]){
+    private static int[] bubbleSort(int array[]) {
+        for (int i = array.length - 1; i >= 0; --i) {
+            for (int j = 0; j < i; ++j) {
+                if (array[j] > array[j + 1]) {
                     int temp = array[j];
                     array[j] = array[j + 1];
                     array[j + 1] = temp;
@@ -224,18 +224,18 @@ public class Main {
         return array;
     }
 
-    private static int[] selectionSort(int array[]){
-            for (int i = 0; i < array.length - 1; ++i){
-                int minIndex = i;
-                for (int j = i + 1; j < array.length; ++j){
-                    if (array[j] < array[minIndex]){
-                        minIndex = j;
-                    }
+    private static int[] selectionSort(int array[]) {
+        for (int i = 0; i < array.length - 1; ++i) {
+            int minIndex = i;
+            for (int j = i + 1; j < array.length; ++j) {
+                if (array[j] < array[minIndex]) {
+                    minIndex = j;
                 }
-                int temp = array[i];
-                array[i] = array[minIndex];
-                array[minIndex] = temp;
             }
+            int temp = array[i];
+            array[i] = array[minIndex];
+            array[minIndex] = temp;
+        }
         return array;
     }
 }

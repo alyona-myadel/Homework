@@ -5,10 +5,32 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //task1();
-        //task3();
-        //task4();
-        task5();
+        while (true) {
+            System.out.println("Введите номер задачи 1..6 (для завершения программы наберите 0): ");
+            Scanner inputScanner = new Scanner(System.in);
+            int taskNumber = inputScanner.nextInt();
+            switch (taskNumber) {
+                case 0:
+                    return;
+                case 1:
+                    task1();
+                    break;
+                case 2:
+//                    task2();
+                    break;
+                case 3:
+                    task3();
+                    break;
+                case 4:
+                    task4();
+                    break;
+                case 5:
+                    task5();
+                    break;
+                default:
+                    System.out.println("Вы неправильно набрали номер.");
+            }
+        }
     }
 
     private static void task1() {

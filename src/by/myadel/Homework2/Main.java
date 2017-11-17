@@ -1,6 +1,8 @@
 package by.myadel.Homework2;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -16,7 +18,7 @@ public class Main {
                     task1();
                     break;
                 case 2:
-//                    task2();
+                    task2();
                     break;
                 case 3:
                     task3();
@@ -73,6 +75,36 @@ public class Main {
             }
         }
         System.out.print("]");
+    }
+
+    private static void task2() {
+        System.out.println("Task 2: \nВведите размер массива: ");
+        Scanner inputScanner = new Scanner(System.in);
+        int size = inputScanner.nextInt();
+        if (size <= 0) {
+            System.out.println("Error");
+            return;
+        }
+        float[] array = new float[size];
+        for (int i = 0; i < size; ++i) {
+            System.out.println("Введите число в массив (index = " + i + "):");
+            float valueArray = inputScanner.nextFloat();
+            array[i] = valueArray;
+        }
+        Map<String, Integer> doubles = new HashMap<String, Integer>();
+        for (int i = 0; i < array.length; ++i) {
+            String key = String.valueOf(array[i]);
+            if (doubles.containsKey(key)) {
+                doubles.put(key, doubles.get(key) + 1);
+            } else {
+                doubles.put(key, 1);
+            }
+        }
+        for (Map.Entry<String, Integer> entry : doubles.entrySet()) {
+            if (entry.getValue() > 1) {
+                System.out.println("[" + entry.getKey() + "]" + " - повторений " + entry.getValue());
+            }
+        }
     }
 
     private static void task3() {

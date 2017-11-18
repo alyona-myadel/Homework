@@ -36,24 +36,13 @@ public class Main {
     }
 
     private static void task1() {
-        System.out.println("Task 1: \nВведите размер массива: ");
-        Scanner inputScanner = new Scanner(System.in);
-        int size = inputScanner.nextInt();
-        if (size <= 0) {
-            System.out.println("Error");
-            return;
-        }
-        int array[] = new int[size];
-        for (int i = 0; i < size; ++i) {
-            System.out.println("Введите целое число в массив (index = " + i + "):");
-            int valueArray = inputScanner.nextInt();
-            array[i] = valueArray;
-        }
+        System.out.println("Task 1:");
+        int[] array = askIntArray();
         int minValue = array[0];
         int minIndex = 0;
         int maxIndex = 0;
         int maxValue = array[0];
-        for (int i = 0; i < size; ++i) {
+        for (int i = 0; i < array.length; ++i) {
             if (minValue > array[i]) {
                 minValue = array[i];
                 minIndex = i;
@@ -67,8 +56,8 @@ public class Main {
         array[maxIndex] = 99;
         System.out.println("min value = " + minValue + "\nmax value = " + maxValue);
         System.out.print("[");
-        for (int i = 0; i < size; ++i) {
-            if (i < size - 1) {
+        for (int i = 0; i < array.length; ++i) {
+            if (i < array.length - 1) {
                 System.out.print(array[i] + ", ");
             } else {
                 System.out.print(array[i]);
@@ -78,19 +67,8 @@ public class Main {
     }
 
     private static void task2() {
-        System.out.println("Task 2: \nВведите размер массива: ");
-        Scanner inputScanner = new Scanner(System.in);
-        int size = inputScanner.nextInt();
-        if (size <= 0) {
-            System.out.println("Error");
-            return;
-        }
-        float[] array = new float[size];
-        for (int i = 0; i < size; ++i) {
-            System.out.println("Введите число в массив (index = " + i + "):");
-            float valueArray = inputScanner.nextFloat();
-            array[i] = valueArray;
-        }
+        System.out.println("Task 2:");
+        float[] array = askFloatArray();
         Map<String, Integer> doubles = new HashMap<String, Integer>();
         for (int i = 0; i < array.length; ++i) {
             String key = String.valueOf(array[i]);
@@ -108,35 +86,24 @@ public class Main {
     }
 
     private static void task3() {
-        System.out.println("Task 3: \nВведите размер массива: ");
-        Scanner inputScanner = new Scanner(System.in);
-        int size = inputScanner.nextInt();
-        if (size <= 0) {
-            System.out.println("Error");
-            return;
-        }
-        float[] array = new float[size];
-        for (int i = 0; i < size; ++i) {
-            System.out.println("Введите целое число в массив (index = " + i + "):");
-            float valueArray = inputScanner.nextFloat();
-            array[i] = valueArray;
-        }
+        System.out.println("Task 3:");
+        float[] array = askFloatArray();
         System.out.print("[");
-        for (int i = 0; i < size; ++i) {
-            if (i < size - 1) {
+        for (int i = 0; i < array.length; ++i) {
+            if (i < array.length - 1) {
                 System.out.print(array[i] + ", ");
             } else {
                 System.out.println(array[i] + "]");
             }
         }
-        for (int i = 0; i < size / 2; ++i) {
+        for (int i = 0; i < array.length / 2; ++i) {
             float temp = array[i];
-            array[i] = array[size - 1 - i];
-            array[size - 1 - i] = temp;
+            array[i] = array[array.length - 1 - i];
+            array[array.length - 1 - i] = temp;
         }
         System.out.print("[");
-        for (int i = 0; i < size; ++i) {
-            if (i < size - 1) {
+        for (int i = 0; i < array.length; ++i) {
+            if (i < array.length - 1) {
                 System.out.print(array[i] + ", ");
             } else {
                 System.out.println(array[i] + "]");
@@ -145,58 +112,36 @@ public class Main {
     }
 
     private static void task4() {
-        System.out.println("Task 4: \nВведите размер массива: ");
+        System.out.println("Task 4: \nВведите число: ");
         Scanner inputScanner = new Scanner(System.in);
-        int size = inputScanner.nextInt();
-        if (size <= 0) {
-            System.out.println("Error");
-            return;
-        }
-        float[] array = new float[size];
-        for (int i = 0; i < size; ++i) {
-            System.out.println("Введите целое число в массив (index = " + i + "):");
-            float value = inputScanner.nextFloat();
-            array[i] = value;
-        }
-        System.out.print("[");
-        for (int i = 0; i < size; ++i) {
-            if (i < size - 1) {
-                System.out.print(array[i] + ", ");
-            } else {
-                System.out.print(array[i] + "]");
-            }
-        }
-        if (isAscendArray(array)) {
-            System.out.print(" - образует возрастающую последовательность");
+        int number = Math.abs(inputScanner.nextInt());
+        System.out.print(number);
+        if (isDigitsAscend(number)) {
+            System.out.println(" - образует возрастающую последовательность");
         } else {
-            System.out.print(" - не образует возрастающую последовательность");
+            System.out.println(" - не образует возрастающую последовательность");
         }
     }
 
-    private static boolean isAscendArray(float[] array) {
-        for (int i = 0; i < array.length - 1; ++i) {
-            if (array[i] > array[i + 1]) {
+    private static boolean isDigitsAscend(int number) {
+        int currentNumber = number;
+        int previousLastDigit = 9;
+        while (currentNumber != 0) {
+            int lastDigit = currentNumber % 10;
+            if (lastDigit > previousLastDigit) {
                 return false;
             }
+            previousLastDigit = lastDigit;
+            currentNumber /= 10;
         }
         return true;
     }
 
     private static void task5() {
-        System.out.println("Task 5: \nВведите размер массива: ");
-        Scanner inputScanner = new Scanner(System.in);
-        int size = inputScanner.nextInt();
-        if (size <= 0) {
-            System.out.println("Error");
-            return;
-        }
-        int[] array = new int[size];
-        for (int i = 0; i < size; ++i) {
-            System.out.println("Введите целое число в массив (index = " + i + "):");
-            int value = inputScanner.nextInt();
-            array[i] = value;
-        }
+        System.out.println("Task 5:");
+        int[] array = askIntArray();
         System.out.println("Каким методом хотите отсортировать массив? \nСортировка вставками - 1 \nСортировка пузырьком - 2 \nСортировка выбором - 3");
+        Scanner inputScanner = new Scanner(System.in);
         int methodSort = inputScanner.nextInt();
         switch (methodSort) {
             case 1:
@@ -289,6 +234,42 @@ public class Main {
             int temp = array[i];
             array[i] = array[minIndex];
             array[minIndex] = temp;
+        }
+        return array;
+    }
+
+    private static int askArraySize() {
+        System.out.println("Введите размер массива: ");
+        Scanner inputScanner = new Scanner(System.in);
+        return inputScanner.nextInt();
+    }
+
+    private static int[] askIntArray() {
+        int size = askArraySize();
+        if (size <= 0) {
+            return new int[]{};
+        }
+        int array[] = new int[size];
+        Scanner inputScanner = new Scanner(System.in);
+        for (int i = 0; i < size; ++i) {
+            System.out.println("Введите целое число в массив (index = " + i + "):");
+            int valueArray = inputScanner.nextInt();
+            array[i] = valueArray;
+        }
+        return array;
+    }
+
+    private static float[] askFloatArray() {
+        int size = askArraySize();
+        if (size <= 0) {
+            return new float[]{};
+        }
+        float array[] = new float[size];
+        Scanner inputScanner = new Scanner(System.in);
+        for (int i = 0; i < size; ++i) {
+            System.out.println("Введите целое число в массив (index = " + i + "):");
+            float valueArray = inputScanner.nextFloat();
+            array[i] = valueArray;
         }
         return array;
     }

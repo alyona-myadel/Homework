@@ -1,4 +1,4 @@
-package by.myadel.Homework3;
+package by.myadel.Homework3.Task1;
 
 public class SelectionSort implements SortMethod {
     @Override

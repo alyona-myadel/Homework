@@ -13,4 +13,9 @@ public class InsertionSort implements SortMethod {
         }
         return array;
     }
+
+    @Override
+    public String getName() {
+        return "сортировка вставками";
+    }
 }

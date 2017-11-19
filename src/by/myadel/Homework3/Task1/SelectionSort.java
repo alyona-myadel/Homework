@@ -17,4 +17,9 @@ public class SelectionSort implements SortMethod {
         }
         return array;
     }
+
+    @Override
+    public String getName() {
+        return "сортировка выбором";
+    }
 }

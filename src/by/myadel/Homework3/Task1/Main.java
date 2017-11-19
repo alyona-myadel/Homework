@@ -1,6 +1,5 @@
 package by.myadel.Homework3.Task1;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -8,30 +7,22 @@ public class Main {
         int[] inputArray = askIntArray();
         System.out.println("Исходный массив: ");
         printOutArray(inputArray);
-        printArraySortedByBubble(inputArray);
-        printArraySortedByInsertion(inputArray);
-        printArraySortedBySelection(inputArray);
+        SortMethod[] sortMethods = new SortMethod[]{new BubbleSort(), new SelectionSort(), new InsertionSort()};
+        for (SortMethod sortMethod : sortMethods) {
+            outSortTimeAndSortedArray(sortMethod, inputArray);
+        }
+        System.out.print("| ");
+        for (int i : inputArray) {
+            if (i % 2 == 0) {
+                System.out.print(i + " | ");
+            }
+        }
     }
 
-    private static void printArraySortedByBubble(int[] inputArray) {
-        SortMethod method = new BubbleSort();
-        long time = measureTimeOfSortArray(method, inputArray);
-        System.out.println("Время сортировки массива пузырьком: " + time + " ns");
-        System.out.println(Arrays.toString(method.sort(inputArray)));
-    }
-
-    private static void printArraySortedByInsertion(int[] inputArray) {
-        SortMethod method = new InsertionSort();
-        long time = measureTimeOfSortArray(method, inputArray);
-        System.out.println("Время сортировки массива вставками: " + time + " ns");
-        System.out.println(Arrays.toString(method.sort(inputArray)));
-    }
-
-    private static void printArraySortedBySelection(int[] inputArray) {
-        SortMethod method = new SelectionSort();
-        long time = measureTimeOfSortArray(method, inputArray);
-        System.out.println("Время сортировки массива выбором: " + time + " ns");
-        System.out.println(Arrays.toString(method.sort(inputArray)));
+    private static void outSortTimeAndSortedArray(SortMethod method, int[] inputArray) {
+        SortResult sortResult = measureTimeOfSortArray(method, inputArray);
+        System.out.println("Алгоритм сортировки: " + method.getName() + ". Время сортировки массива: " + sortResult.time + " ns");
+        printOutArray(sortResult.sortedArray);
     }
 
     private static int askArraySize() {
@@ -55,23 +46,23 @@ public class Main {
         return array;
     }
 
-    private static long measureTimeOfSortArray(SortMethod sortMethod, int[] array) {
+    private static SortResult measureTimeOfSortArray(SortMethod sortMethod, int[] array) {
         long startTime = System.nanoTime();
-        sortMethod.sort(array);
+        int[] sortedArray = sortMethod.sort(array);
         long endTime = System.nanoTime();
-        return endTime - startTime;
+        long time = endTime - startTime;
+        return new SortResult(time, sortedArray);
     }
 
     private static void printOutArray(int[] array) {
-        System.out.print("[");
+        System.out.print("[ ");
         for (int i = 0; i < array.length; ++i) {
             if (i < array.length - 1) {
-                System.out.print(array[i] + ", ");
+                System.out.print(array[i] + " | ");
             } else {
                 System.out.print(array[i]);
             }
         }
-        System.out.print("]\n");
+        System.out.print(" ]\n");
     }
-
 }

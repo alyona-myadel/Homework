@@ -17,5 +17,10 @@ public class BubbleSort implements SortMethod {
         return array;
     }
 
+    @Override
+    public String getName() {
+        return "сортировка пузырьком";
+    }
+
 
 }

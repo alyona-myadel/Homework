@@ -1,5 +1,6 @@
 package by.myadel.Homework3.Task1;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
@@ -11,11 +12,20 @@ public class Main {
         for (SortMethod sortMethod : sortMethods) {
             outSortTimeAndSortedArray(sortMethod, inputArray);
         }
-        System.out.print("| ");
+
+        LinkedList<String> stringLinkList = new LinkedList<>();
+        stringLinkList.add("[ ");
         for (int i : inputArray) {
             if (i % 2 == 0) {
-                System.out.print(i + " | ");
+                stringLinkList.add(String.valueOf(i));
+                stringLinkList.add(" | ");
             }
+        }
+        stringLinkList.removeLast();
+        stringLinkList.addLast(" ]");
+        System.out.println("Вывод массива четных чисел: ");
+        for (int i = 0; i < stringLinkList.size(); ++i) {
+            System.out.print(stringLinkList.get(i));
         }
     }
 

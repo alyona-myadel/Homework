@@ -58,7 +58,7 @@ public class Patient {
     }
 
     public boolean isMatchSearchParameters(PatientSearchParameters searchParameters) {
-        if (searchParameters.getSearchName().equals(getName()) || searchParameters.getSearchYearOfBirth() == getYearOfBirth()) {
+        if (searchParameters.getSearchName().equals(getName()) || searchParameters.getSearchSurname().equals(getSurname()) || searchParameters.getSearchYearOfBirth() == getYearOfBirth()) {
             return true;
         }
         return false;

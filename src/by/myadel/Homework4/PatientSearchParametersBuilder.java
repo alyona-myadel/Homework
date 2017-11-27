@@ -8,6 +8,11 @@ public class PatientSearchParametersBuilder {
         return this;
     }
 
+    public PatientSearchParametersBuilder setSurname(String surname) {
+        parameters.setSearchSurname(surname);
+        return this;
+    }
+
     public PatientSearchParametersBuilder setYearOfBirth(int yearOfBirth) {
         parameters.setSearchYearOfBirth(yearOfBirth);
         return this;

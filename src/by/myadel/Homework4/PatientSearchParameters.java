@@ -2,6 +2,7 @@ package by.myadel.Homework4;
 
 public class PatientSearchParameters {
     private String searchName;
+    private String searchSurname;
     private int searchYearOfBirth;
 
     public String getSearchName() {
@@ -10,6 +11,14 @@ public class PatientSearchParameters {
 
     public void setSearchName(String searchName) {
         this.searchName = searchName;
+    }
+
+    public String getSearchSurname() {
+        return searchSurname;
+    }
+
+    public void setSearchSurname(String searchSurname) {
+        this.searchSurname = searchSurname;
     }
 
     public int getSearchYearOfBirth() {

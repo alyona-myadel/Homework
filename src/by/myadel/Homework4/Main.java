@@ -31,6 +31,8 @@ public class Main {
         PatientSearchParametersBuilder parametersBuilder = new PatientSearchParametersBuilder();
         System.out.println("Введите имя пациента: ");
         parametersBuilder.setName(inputScanner.next());
+        System.out.println("Введите фамилию пациента: ");
+        parametersBuilder.setSurname(inputScanner.next());
         System.out.println("Введите год рождения пациента: ");
         parametersBuilder.setYearOfBirth(inputScanner.nextInt());
         for (Patient patient : patientDataStore.getAllPatients())

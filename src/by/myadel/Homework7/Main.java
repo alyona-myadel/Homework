@@ -4,6 +4,12 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 public class Main {
+    private static final long oneYearSeconds = 31536000L;
+    private static final long oneMonthSeconds = 2592000L;
+    private static final long oneDaySeconds = 86400L;
+    private static final long oneHourSeconds = 3600L;
+    private static final long oneMinuteSeconds = 60L;
+
     public static void main(String[] args) throws ParseException {
         int countStudents = askCountStudents();
         if (countStudents <= 0) {
@@ -40,19 +46,14 @@ public class Main {
     }
 
     private static void printAge(long ageSeconds) {
-        long oneYearSeconds = 31536000L;
         long year = ageSeconds / oneYearSeconds;
         long remainder = ageSeconds % oneYearSeconds;
-        long oneMonthSeconds = 2592000L;
         long month = remainder / oneMonthSeconds;
         remainder %= oneMonthSeconds;
-        long oneDaySeconds = 86400L;
         long day = remainder / oneDaySeconds;
         remainder %= oneDaySeconds;
-        long oneHourSeconds = 3600L;
         long hour = remainder / oneHourSeconds;
         remainder %= oneHourSeconds;
-        long oneMinuteSeconds = 60L;
         long minute = remainder / oneMinuteSeconds;
         long seconds = remainder % oneMinuteSeconds;
         System.out.println(year + " год " + month + " месяцев " + day + " дней " + hour + " часов "

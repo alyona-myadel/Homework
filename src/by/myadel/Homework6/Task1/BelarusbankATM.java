@@ -3,7 +3,7 @@ package by.myadel.Homework6.Task1;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BelarusbankATM extends BaseATM implements BankNameViewable {
+public class BelarusbankATM extends BaseATM {
     private List<Integer> availableDenominations;
 
     @Override

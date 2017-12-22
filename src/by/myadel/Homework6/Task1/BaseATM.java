@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public abstract class BaseATM implements Withdrawable, Replenishable, BalanceViewable, ManufacturerViewable {
+public abstract class BaseATM implements Withdrawable, Replenishable, BalanceViewable, ManufacturerViewable, BankNameViewable {
     protected Map<Integer, Integer> atmStorage = new HashMap<>();
 
     @Override

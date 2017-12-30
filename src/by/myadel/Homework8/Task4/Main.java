@@ -58,6 +58,7 @@ public class Main {
         writeToFile(file, patientDataStore);
         System.out.println("Все пациенты: ");
         printPatient(patientDataStore);
+        System.out.println("Поиск пациента: ");
         printPatientSearch(patientDataStore);
     }
 

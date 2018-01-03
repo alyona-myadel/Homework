@@ -1,4 +1,4 @@
-package by.myadel.Homework13;
+package by.myadel.Homework13.Task1;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;

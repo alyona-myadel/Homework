@@ -3,6 +3,7 @@ package by.myadel.Homework17.Task1;
 import java.io.File;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -43,14 +44,13 @@ class WriteFile {
             }
 
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
+
             DOMSource source = new DOMSource(document);
             StreamResult result = new StreamResult(new File(System.getProperty("user.dir") + File.separator
                     + FILENAME));
-
+            transformer.setOutputProperty( OutputKeys.INDENT, "yes" );
             transformer.transform(source, result);
-
             System.out.println("Документ сохранен!");
-
         } catch (ParserConfigurationException | TransformerException ex) {
             ex.getStackTrace();
         }

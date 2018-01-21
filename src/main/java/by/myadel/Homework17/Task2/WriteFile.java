@@ -6,6 +6,7 @@ import org.w3c.dom.Element;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -44,7 +45,7 @@ class WriteFile {
             DOMSource source = new DOMSource(document);
             StreamResult result = new StreamResult(new File(System.getProperty("user.dir") + File.separator
                     + FILENAME));
-
+            transformer.setOutputProperty( OutputKeys.INDENT, "yes" );
             transformer.transform(source, result);
 
             System.out.println("Документ сохранен!");

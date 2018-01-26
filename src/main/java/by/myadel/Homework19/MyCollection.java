@@ -1,7 +1,5 @@
 package by.myadel.Homework19;
 
-import com.fasterxml.jackson.databind.MappingIterator;
-
 import java.util.*;
 
 public class MyCollection<Department, Staff> implements MyCollectionContract<Department, Staff> {
@@ -28,7 +26,7 @@ public class MyCollection<Department, Staff> implements MyCollectionContract<Dep
 
     @Override
     public void addDepartment(Department department) {
-        staff.put(department, new ArrayList<Staff>());
+        staff.put(department, new ArrayList<>());
     }
 
     @Override
@@ -62,7 +60,7 @@ public class MyCollection<Department, Staff> implements MyCollectionContract<Dep
         private Iterator<Staff> staffIterator;
         private Map.Entry<Department, List<Staff>> entry;
 
-        public MyCollectionIterator() {
+        MyCollectionIterator() {
             entryIterator = staff.entrySet().iterator();
         }
 
@@ -81,6 +79,11 @@ public class MyCollection<Department, Staff> implements MyCollectionContract<Dep
         @Override
         public Staff next() {
             return staffIterator.next();
+        }
+
+        @Override
+        public void remove() {
+            staffIterator.remove();
         }
     }
 

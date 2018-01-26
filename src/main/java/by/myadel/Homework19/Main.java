@@ -4,24 +4,17 @@ import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
-        MyCollection<Staff, Department> myCollection = new MyCollection<>();
-        Staff staff = new Staff();
-        staff.setStaffId(11);
-        staff.setStaffName("Ivanov");
-        Department department = new Department();
-        department.setId(404);
-        department.setName("departament");
-        myCollection.addStaff(department, staff);
-        myCollection.addDepartment(staff);
-        Iterator<Department> integerIterator = myCollection.iterator();
-        if (integerIterator.hasNext()) {
+        MyCollection<Integer, Integer> myCollection = new MyCollection<>();
+        Integer department1 = 404;
+        Integer department2 = 402;
+        myCollection.addDepartment(department1);
+        myCollection.addDepartment(department2);
+        myCollection.addStaff(42, department1);
+        myCollection.addStaff(32, department2);
+        Iterator<Integer> integerIterator = myCollection.iterator();
+        System.out.println("Get the ID of all employees: ");
+        while (integerIterator.hasNext()) {
             System.out.println(integerIterator.next());
         }
-        System.out.println(myCollection.getDirector());
-        Iterator<Department> iterator = myCollection.iterator();
-        do {
-            iterator.next();
-            iterator.remove();
-        } while (iterator.hasNext());
     }
 }

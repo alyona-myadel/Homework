@@ -1,6 +1,6 @@
 package by.myadel.Homework19;
 
-public interface MyCollectionContract<Department, Staff> {
+public interface MyCollectionContract<Department, Staff> extends Iterable<Staff> {
     // 3 methods to do head of firm
     void setDirector(Staff director);
 
